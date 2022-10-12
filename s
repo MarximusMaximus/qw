@@ -22,6 +22,12 @@ def registration():
     button_registr.pack()
     def save ():
         login_pass_save = {}
+        try:
+            f = open("login.txt", "rb")
+            login_pass_save = pickle.load(f)
+            f.close()
+        except Exception:
+            pass
         login_pass_save[registr_login.get()] = registr_password.get()
         f = open("login.txt", 'wb')
         pickle.dump(login_pass_save, f)
